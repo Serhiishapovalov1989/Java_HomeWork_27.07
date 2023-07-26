@@ -1,0 +1,69 @@
+Задание №1 с температурой:
+
+Class Main:
+package task1;
+
+import java.util.Scanner;
+
+import static task1.Temperature.checkTemperature;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите первую температуру: ");
+        int firstTemp = scanner.nextInt();
+        System.out.print("Введите вторую температуру: ");
+        int secondTemp = scanner.nextInt();
+
+        if (checkTemperature(firstTemp, secondTemp)) {
+            System.out.println("Прибор будет работать правильно");
+        } else {
+            System.out.println("Прибор работает неправильно");
+        }
+    }
+}
+
+
+
+Class Temperature:
+package task1;
+
+public class Temperature {
+    public static boolean checkTemperature(int temp1, int temp2){
+        return temp1 > 100 && temp2 < 100;
+    }
+}
+
+
+
+_____________________________________________________________________________
+Задание №2 с балансом:
+
+package task2;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Type your current balance: ");
+        int currentBalance = scanner.nextInt();
+
+        int days = 0;
+
+        while (currentBalance > 1) {
+            int max = 0;
+            for (int i = 1; i < currentBalance; i++) {
+                if (currentBalance % i == 0) {
+                    max = i;
+                }
+            }
+            currentBalance = currentBalance - max;
+            days++;
+            if (currentBalance == 1) {
+                days++;
+            }
+        }
+        System.out.println(days);
+    }
+}
